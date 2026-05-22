@@ -186,35 +186,43 @@ function connectAbly(): void {
     ablyRealtime = new Ably.Realtime({ key: ABLY_CONFIG.key });
     const conn = ablyRealtime.connection;
 
-    conn.on('connecting', () => {
-      setConnectionStatus(false, 'Conectando...');
-    });
+    const updateStatusFromState = () => {
+      if (conn.state === 'connected') {
+        setConnectionStatus(true);
+      } else if (conn.state === 'connecting') {
+        setConnectionStatus(false, 'Conectando...');
+      } else if (conn.state === 'failed') {
+        setConnectionStatus(false, 'Error de conexión');
+      } else {
+        setConnectionStatus(false, 'Desconectado');
+      }
+    };
 
-    conn.on('connected', () => {
-      setConnectionStatus(true);
-    });
-
+    conn.on('connecting', () => setConnectionStatus(false, 'Conectando...'));
+    conn.on('connected', () => setConnectionStatus(true));
     conn.on('failed', (err: { reason?: { message?: string } }) => {
       setConnectionStatus(false, err?.reason?.message || 'Error de conexión');
     });
+    conn.on('disconnected', () => setConnectionStatus(false, 'Reconectando...'));
 
-    conn.on('disconnected', () => {
-      setConnectionStatus(false, 'Reconectando...');
-    });
-
-    connectTimeout = setTimeout(() => {
-      if (conn.state !== 'connected') {
-        setConnectionStatus(false, 'Tiempo de espera agotado. ¿Firewall o bloqueo de red?');
-      }
-    }, 15000);
+    updateStatusFromState();
+    setTimeout(updateStatusFromState, 1000);
 
     ablyChannel = ablyRealtime.channels.get(ABLY_CONFIG.channelName);
     ablyChannel.subscribe('message', (message: Ably.InboundMessage) => {
+      setConnectionStatus(true);
       receiveMessage(message.data);
     });
   } catch (err) {
     setConnectionStatus(false, 'Error al iniciar Ably');
     console.error('Ably init error:', err);
+  }
+}
+
+function clearChatHistory(): void {
+  if (confirm('¿Borrar todo el historial del chat?')) {
+    saveMessages([]);
+    renderMessages();
   }
 }
 
@@ -230,6 +238,7 @@ export function setupChat(): void {
   document.getElementById('chatSendBtn')?.addEventListener('click', sendMessage);
   document.getElementById('chatInput')?.addEventListener('keydown', handleInputKeydown);
   document.getElementById('chatNickname')?.addEventListener('keydown', handleNicknameKeydown);
+  document.getElementById('chatClearBtn')?.addEventListener('click', clearChatHistory);
 
   if (document.getElementById('chatNickname') && !currentNickname) {
     (document.getElementById('chatNickname') as HTMLInputElement)?.focus();

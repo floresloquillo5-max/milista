@@ -3268,6 +3268,17 @@ body:not(.light-theme) .header-theme-btn svg {
   margin: 0;
 }
 
+.chat-actions {
+  text-align: center;
+  margin-bottom: var(--space-3);
+}
+
+.chat-actions .btn-outline {
+  font-size: var(--text-xs);
+  padding: 4px 12px;
+  min-height: 32px;
+}
+
 .chat-nickname-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
