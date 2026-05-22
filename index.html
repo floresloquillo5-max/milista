@@ -737,6 +737,50 @@
           <span class="wa-arrow">→</span>
         </a>
         <p class="faq-contact-note">Respuesta típica en menos de 24 horas. Tu opinión ayuda a mejorar la app.</p>
+        <div class="faq-chat-divider">
+          <span>Conecta con otros</span>
+        </div>
+        <a href="#" id="chatFaqLink" class="faq-chat-link">
+          <span class="faq-chat-icon">💬</span>
+          <span class="faq-chat-text">Ir al chat comunitario</span>
+          <span class="faq-chat-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW: CHAT -->
+  <div id="chat-view" class="view">
+    <div class="chat-container">
+      <div class="chat-header">
+        <h3><span class="header-emoji">💬</span> Chat Comunitario</h3>
+        <p class="chat-subtitle">Chatea con otros usuarios sin necesidad de registro</p>
+      </div>
+
+      <div id="chatNicknameSection">
+        <div class="chat-nickname-card">
+          <div class="chat-nickname-icon">👤</div>
+          <h4>Elige tu nombre</h4>
+          <p>No necesitas registrarte. Solo escoge un nombre para aparecer en el chat.</p>
+          <div class="chat-nickname-input">
+            <input type="text" id="chatNickname" placeholder="Tu nombre..." maxlength="30" autocomplete="off">
+            <button class="chat-nickname-btn" id="chatNicknameBtn">Entrar</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="chatMainSection" class="chat-hidden">
+        <div class="chat-messages" id="chatMessages">
+          <div class="chat-empty">Cargando...</div>
+        </div>
+        <div class="chat-input-bar">
+          <input type="text" id="chatInput" placeholder="Escribe un mensaje..." maxlength="500" autocomplete="off">
+          <button id="chatSendBtn" class="chat-send-btn" title="Enviar">➤</button>
+        </div>
+      </div>
+
+      <div class="chat-footer">
+        <p>Los mensajes se almacenan localmente en tu dispositivo y se comparten en tiempo real entre usuarios activos.</p>
       </div>
     </div>
   </div>

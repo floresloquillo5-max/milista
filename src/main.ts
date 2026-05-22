@@ -10,6 +10,7 @@ import { renderCalendar, navigateCalendar, selectCalendarDay, toggleQuickForm, c
 import { setupNotifications } from './modules/notifications';
 
 import { setupBarcodeScanner, stopScanner } from './modules/scanner';
+import { setupChat } from './modules/chat';
 import { backupAllData, restoreAllData, handleRestoreFile } from './modules/backup';
 import { showToast, showConfirmModal, closeConfirmModal, executeConfirmAction, getLastBackupDate, setLastBackupDate } from './utils/dom';
 import { updateTotals } from './modules/finances';
@@ -47,6 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ===== BUTTON EVENT LISTENERS ===== */
 
   document.getElementById('themeBtn')?.addEventListener('click', toggleTheme);
+  document.getElementById('chatNicknameBtn')?.addEventListener('click', () => {
+    const input = document.getElementById('chatNickname') as HTMLInputElement | null;
+    if (input) {
+      input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+    }
+  });
   document.getElementById('logoBtn')?.addEventListener('click', switchToMainView);
   document.getElementById('logoBtn')?.addEventListener('keydown', (e: KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') switchToMainView();
@@ -305,6 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Deferred setup */
   setTimeout(() => {
+    setupChat();
     setupBarcodeScanner();
     setupNotifications();
     renderTransactionHistory();
