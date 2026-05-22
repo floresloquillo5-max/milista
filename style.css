@@ -193,25 +193,6 @@ body {
   box-shadow: 0 0 16px var(--gold-glow);
 }
 
-.install-btn {
-  flex-shrink: 0;
-  background: var(--gold);
-  border: none;
-  color: var(--cashea-black);
-  padding: 5px 10px;
-  border-radius: 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s;
-  line-height: 1;
-}
-.install-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px var(--gold-glow-strong);
-}
-.install-btn.hidden {
-  display: none;
-}
 
 .header-body {
   display: grid;

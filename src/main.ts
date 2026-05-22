@@ -8,7 +8,7 @@ import { toggleManualInput, swapConversion, calculateConversion, calculateCovera
 import { addTransaction, useCurrentListTotal, setSavingsGoal, deleteSavingsGoal, addSavingsContribution, renderFinanceSummary, renderSavingsGoal, setDefaultTransactionDate, renderTransactionHistory, renderCharts, renderStatistics, exportTransactionsCSV, exportTransactionsJSON, importTransactionsCSV, handleImportCsvFile, deleteTransaction, clearAllTransactions, showRandomTip, toggleDebtForm, addDebt, deleteDebt, markDebtPayment, renderDebts, showTransactionDetail, closeTxDetailModal } from './modules/finances';
 import { renderCalendar, navigateCalendar, selectCalendarDay, toggleQuickForm, closeQuickForm, saveQuickTransaction, exportCalendarMonth, toggleMonthPicker, jumpToMonth, deleteFromCalendar } from './modules/calendar';
 import { setupNotifications } from './modules/notifications';
-import { setupPwaInstall } from './modules/pwa';
+
 import { setupBarcodeScanner, stopScanner } from './modules/scanner';
 import { backupAllData, restoreAllData, handleRestoreFile } from './modules/backup';
 import { showToast, showConfirmModal, closeConfirmModal, executeConfirmAction, getLastBackupDate, setLastBackupDate } from './utils/dom';
@@ -306,7 +306,6 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Deferred setup */
   setTimeout(() => {
     setupBarcodeScanner();
-    setupPwaInstall();
     setupNotifications();
     renderTransactionHistory();
     renderCharts();
