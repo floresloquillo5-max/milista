@@ -31,7 +31,7 @@ export const SAVINGS_TIPS = [
 ];
 
 export const ABLY_CONFIG = {
-  key: '', // 👈 Pon aquí tu API key de Ably (https://ably.com/signup)
+  key: 'hj73nA.ZZRryw:cmLgtKT3ESGdxxRJdcLC8zCEybVG7eyGdccZmKtFPus',
   channelName: 'listamigo-chat',
 };
 
