@@ -1,4 +1,5 @@
 const CACHE = 'mi-mercado-v5';
+const API_CACHE = 'mi-mercado-api-v1';
 const BASE = self.location.pathname.replace(/\/sw\.js$/, '');
 
 const STATIC_URLS = [
@@ -6,6 +7,15 @@ const STATIC_URLS = [
   BASE + '/style.css',
   BASE + '/dist/app.js',
   BASE + '/manifest.json',
+  BASE + '/icon.svg',
+  BASE + '/icon-192.png',
+  BASE + '/icon-512.png',
+];
+
+const RATE_API_HOSTS = [
+  'pydolarve.org',
+  've.dolarapi.com',
+  'pydolarvenezuela-api.vercel.app',
 ];
 
 self.addEventListener('install', function(event) {
@@ -27,12 +37,22 @@ self.addEventListener('activate', function(event) {
     (async () => {
       const keys = await caches.keys();
       await Promise.all(
-        keys.filter(k => k !== CACHE).map(k => caches.delete(k))
+        keys.filter(k => k !== CACHE && k !== API_CACHE).map(k => caches.delete(k))
       );
       await self.clients.claim();
     })()
   );
 });
+
+async function staleWhileRevalidate(request) {
+  const cache = await caches.open(API_CACHE);
+  const cached = await cache.match(request);
+  const fetchPromise = fetch(request).then(response => {
+    if (response.ok) cache.put(request, response.clone());
+    return response;
+  }).catch(() => cached);
+  return cached || fetchPromise;
+}
 
 async function networkFirstWithCacheFallback(request) {
   try {
@@ -57,15 +77,19 @@ self.addEventListener('fetch', function(event) {
   const url = new URL(request.url);
 
   if (url.hostname !== self.location.hostname) {
-    event.respondWith(
-      fetch(request).then(function(response) {
-        var clone = response.clone();
-        caches.open(CACHE).then(function(cache) { cache.put(request, clone); });
-        return response;
-      }).catch(function() {
-        return caches.match(request);
-      })
-    );
+    if (RATE_API_HOSTS.includes(url.hostname)) {
+      event.respondWith(staleWhileRevalidate(request));
+    } else {
+      event.respondWith(
+        fetch(request).then(function(response) {
+          var clone = response.clone();
+          caches.open(CACHE).then(function(cache) { cache.put(request, clone); });
+          return response;
+        }).catch(function() {
+          return caches.match(request);
+        })
+      );
+    }
     return;
   }
 

@@ -18,8 +18,9 @@ export function setupBarcodeScanner(): void {
       AppState.state.scannerActive = true;
       video.play();
       scanBarcode(video, stream);
-    } catch {
-      showToast('⚠️ No se pudo acceder a la cámara');
+    } catch (err) {
+      const denied = err instanceof DOMException && (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError');
+      showToast(denied ? '⚠️ Permiso de cámara denegado. Actívalo en los ajustes del navegador.' : '⚠️ No se pudo acceder a la cámara');
       overlay.classList.remove('visible');
     }
   });

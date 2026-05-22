@@ -7,24 +7,75 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Mi Mercado">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>">
+    <link rel="apple-touch-icon" href="icon-192.png">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://pydolarve.org https://ve.dolarapi.com https://pydolarvenezuela-api.vercel.app; script-src 'self' 'unsafe-inline'">
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>">
+    <link rel="icon" href="icon.svg" sizes="any" type="image/svg+xml">
+    <link rel="icon" href="icon-192.png" sizes="192x192" type="image/png">
 </head>
 <body>
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="3" width="18" height="18" rx="2"/>
+    <line x1="9" y1="8" x2="17" y2="8"/>
+    <line x1="9" y1="12" x2="17" y2="12"/>
+    <line x1="9" y1="16" x2="14" y2="16"/>
+    <circle cx="6.5" cy="8" r="1"/>
+    <circle cx="6.5" cy="12" r="1"/>
+    <circle cx="6.5" cy="16" r="1"/>
+  </symbol>
+  <symbol id="icon-calc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="3" width="14" height="18" rx="2"/>
+    <line x1="5" y1="9" x2="19" y2="9"/>
+    <rect x="7" y="12" width="4" height="3" rx=".5"/>
+    <rect x="13" y="12" width="4" height="3" rx=".5"/>
+    <rect x="7" y="17" width="4" height="3" rx=".5"/>
+    <rect x="13" y="17" width="4" height="3" rx=".5"/>
+  </symbol>
+  <symbol id="icon-money" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/>
+    <path d="M9 9.5C9 7.5 10.5 7 12 7s3 .5 3 2.5-2 3.5-3 4-3 2-3 4.5 1.5 3 3 3 3-.5 3-2.5"/>
+  </symbol>
+  <symbol id="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="4" width="18" height="18" rx="2"/>
+    <line x1="3" y1="10" x2="21" y2="10"/>
+    <line x1="8" y1="2" x2="8" y2="6"/>
+    <line x1="16" y1="2" x2="16" y2="6"/>
+    <circle cx="12" cy="15" r="2"/>
+  </symbol>
+  <symbol id="icon-faq" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M9.5 9.5c0-2 2.5-3 4-1s-1 3.5-2 4.5v1"/>
+    <circle cx="12" cy="17" r="1"/>
+  </symbol>
+  <symbol id="icon-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/>
+  </symbol>
+  <symbol id="icon-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="9" cy="21" r="1"/>
+    <circle cx="20" cy="21" r="1"/>
+    <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.6a2 2 0 0 0 2-1.6L23 6H6"/>
+  </symbol>
+  <symbol id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/>
+  </symbol>
+  <symbol id="icon-dollar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="1" x2="12" y2="23"/>
+    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+  </symbol>
+</svg>
 <a href="#main-view" class="skip-link">Saltar al contenido</a>
-<div id="offlineIndicator" class="offline-indicator" role="status" aria-live="polite">🌐 Sin conexión</div>
+<div id="offlineIndicator" class="offline-indicator" role="status" aria-live="polite">🌐️ Sin conexión</div>
 <header class="header">
     <div class="header-top">
-        <h1 id="logoBtn" tabindex="0" role="button">🛒 Mi Mercado</h1>
+        <h1 id="logoBtn" tabindex="0" role="button"><svg class="header-icon" viewBox="0 0 24 24" width="22" height="22"><use href="#icon-cart"/></svg> Mi Mercado</h1>
         <span class="ht-update" id="lastUpdate"></span>
-        <button class="theme-toggle" id="themeBtn" title="Cambiar tema">🌙</button>
+        <button class="theme-toggle" id="themeBtn" title="Cambiar tema"><svg class="header-icon" viewBox="0 0 24 24" width="18" height="18"><use href="#icon-moon"/></svg></button>
     </div>
     <div class="header-body">
         <div class="hcol">
-            <span class="hcol-label"><span class="hcol-icon">💵</span> Tasa BCV</span>
+            <span class="hcol-label"><svg class="hcol-icon" viewBox="0 0 24 24" width="18" height="18"><use href="#icon-dollar"/></svg> Tasa BCV</span>
             <span class="hcol-value" id="rateDisplay">Cargando...</span>
         </div>
         <div class="hcol hcol-cashea">
@@ -41,12 +92,12 @@
 
 <!-- MENÚ INFERIOR -->
     <nav class="bottom-menu" role="tablist" aria-label="Navegación principal">
-    <button class="menu-btn active" data-view="main" role="tab" aria-selected="true" aria-controls="main-view"><span class="menu-icon">📝</span> Lista</button>
-    <button class="menu-btn" data-view="calculadora" role="tab" aria-selected="false" aria-controls="calculadora-view"><span class="menu-icon">🧮</span> Calculadora</button>
-    <button class="menu-btn" data-view="finanzas" role="tab" aria-selected="false" aria-controls="finanzas-view"><span class="menu-icon">💰</span> Finanzas</button>
-    <button class="menu-btn" data-view="calendario" role="tab" aria-selected="false" aria-controls="calendario-view"><span class="menu-icon">📅</span> Calendario</button>
-    <button class="menu-btn" data-view="faq" role="tab" aria-selected="false" aria-controls="faq-view"><span class="menu-icon">❓</span> FAQ</button>
-    <button class="menu-btn" data-view="donaciones" role="tab" aria-selected="false" aria-controls="donaciones-view"><span class="menu-icon">💛</span> Donaciones</button>
+    <button class="menu-btn active" data-view="main" role="tab" aria-selected="true" aria-controls="main-view"><svg class="menu-icon" viewBox="0 0 24 24" width="24" height="24"><use href="#icon-list"/></svg> Lista</button>
+    <button class="menu-btn" data-view="calculadora" role="tab" aria-selected="false" aria-controls="calculadora-view"><svg class="menu-icon" viewBox="0 0 24 24" width="24" height="24"><use href="#icon-calc"/></svg> Calculadora</button>
+    <button class="menu-btn" data-view="finanzas" role="tab" aria-selected="false" aria-controls="finanzas-view"><svg class="menu-icon" viewBox="0 0 24 24" width="24" height="24"><use href="#icon-money"/></svg> Finanzas</button>
+    <button class="menu-btn" data-view="calendario" role="tab" aria-selected="false" aria-controls="calendario-view"><svg class="menu-icon" viewBox="0 0 24 24" width="24" height="24"><use href="#icon-calendar"/></svg> Calendario</button>
+    <button class="menu-btn" data-view="faq" role="tab" aria-selected="false" aria-controls="faq-view"><svg class="menu-icon" viewBox="0 0 24 24" width="24" height="24"><use href="#icon-faq"/></svg> FAQ</button>
+    <button class="menu-btn" data-view="donaciones" role="tab" aria-selected="false" aria-controls="donaciones-view"><svg class="menu-icon" viewBox="0 0 24 24" width="24" height="24"><use href="#icon-heart"/></svg> Donaciones</button>
     </nav>
 
 <div class="app-container">
@@ -55,27 +106,27 @@
         <div id="pageList">
             <div class="list-management-toggle" id="listManagementToggle">
                 <div class="toggle-title">
-                    <span>📋</span>
+                    <span>📋️</span>
                     <span>Gestión de Listas</span>
                 </div>
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="list-management-section" id="listManagementSection">
-                <h3>📋 Gestión de Listas</h3>
+                <h3>📋️ Gestión de Listas</h3>
                 <div style="margin-bottom:12px;">
                     <label style="color:var(--text-muted); text-transform:uppercase; display:block; margin-bottom:6px;">Lista activa</label>
                     <select id="listSelect" style="width:100%; background:var(--bg-input); border:1px solid var(--border); border-radius:var(--radius-xs); padding:10px 12px; color:var(--text);"></select>
                 </div>
                 <div style="display:flex; flex-direction:column; gap:8px;">
-                    <button class="btn btn-primary" id="createNewListBtn">➕ Crear Nueva Lista</button>
-                    <button class="btn btn-outline" id="copyListBtn">📋 Copiar Lista Actual</button>
-                    <button class="btn btn-outline" id="exportListBtn">📤 Exportar / Compartir</button>
-                    <button class="btn btn-outline" id="openImportBtn">📥 Importar Lista</button>
+                    <button class="btn btn-primary" id="createNewListBtn">➕️ Crear Nueva Lista</button>
+                    <button class="btn btn-outline" id="copyListBtn">📋️ Copiar Lista Actual</button>
+                    <button class="btn btn-outline" id="exportListBtn">📤️ Exportar / Compartir</button>
+                    <button class="btn btn-outline" id="openImportBtn">📥️ Importar Lista</button>
                     <button class="btn btn-outline" id="deleteListBtn" style="color:var(--danger); border-color:var(--danger);">🗑️ Eliminar Lista</button>
                 </div>
             </div>
             <div class="add-form">
-                <h3>➕ Agregar Producto</h3>
+                <h3>➕️ Agregar Producto</h3>
                 <div class="form-row">
                     <div class="form-group" style="flex:2;">
                         <label>Producto</label>
@@ -98,37 +149,37 @@
                 </div>
                 <div class="barcode-row">
                     <div class="form-group" style="flex:1;">
-                        <label>📷 Código de barras</label>
+                        <label>📷️ Código de barras</label>
                         <input type="text" id="barcodeInput" placeholder="Escanear o escribir código" inputmode="numeric" maxlength="50">
                     </div>
-                    <button class="scan-btn" id="barcodeScanBtn" title="Escanear">📷</button>
+                    <button class="scan-btn" id="barcodeScanBtn" title="Escanear">📷️</button>
                 </div>
-                <button class="btn btn-primary" id="addProductBtn">➕ Agregar</button>
+                <button class="btn btn-primary" id="addProductBtn">➕️ Agregar</button>
             </div>
             <div class="list-header">
-                <h3 id="listTitle">📋 Mi Lista <button class="btn-icon" id="editListNameBtn" title="Renombrar">✏️</button></h3>
+                <h3 id="listTitle">📋️ Mi Lista <button class="btn-icon" id="editListNameBtn" title="Renombrar">✏️</button></h3>
                 <div class="list-actions">
                     <button class="btn btn-sm btn-outline" id="clearListBtn">🗑️ Borrar todo</button>
-                    <button class="btn btn-sm btn-outline" id="shareListBtn">📤 Compartir</button>
+                    <button class="btn btn-sm btn-outline" id="shareListBtn">📤️ Compartir</button>
                 </div>
             </div>
-            <div class="pull-indicator" id="pullIndicator">🔄 Arrastra para refrescar</div>
+            <div class="pull-indicator" id="pullIndicator">🔄️ Arrastra para refrescar</div>
             <div class="product-list" id="productList">
                 <div class="empty-state">
-                    <div class="empty-icon">🛒</div>
+                    <div class="empty-icon">🛒️</div>
                     <p>Tu lista está vacía.<br>Agrega productos para empezar.</p>
                 </div>
             </div>
             <div class="totals-section" id="totalsSection" style="display:none;">
                 <div class="total-row">
-                    <span class="total-label">📦 Total lista</span>
+                    <span class="total-label">📦️ Total lista</span>
                     <div class="total-values">
                         <div class="total-usd" id="totalUsd">$0.00</div>
                         <div class="total-bs" id="totalBs">Bs. 0,00</div>
                     </div>
                 </div>
                 <div class="total-row highlight">
-                    <span class="total-label">✅ Seleccionado</span>
+                    <span class="total-label">✅️ Seleccionado</span>
                     <div class="total-values">
                         <div class="total-usd" id="checkedUsd">$0.00</div>
                         <div class="total-bs" id="checkedBs">Bs. 0,00</div>
@@ -145,7 +196,7 @@
                     </div>
                 </div>
                 <div class="total-row expense">
-                    <span class="total-label">💳 Pago inicial</span>
+                    <span class="total-label">💳️ Pago inicial</span>
                     <div class="total-values">
                         <div class="total-usd" id="userPayUsd">$0.00</div>
                         <div class="total-bs" id="userPayBs">Bs. 0,00</div>
@@ -159,11 +210,11 @@
     <div id="calculadora-view" class="view">
         <div class="calculadora-container">
             <div class="calculadora-header">
-                <h3><span class="header-emoji">🧮</span> Calculadora</h3>
+                <h3><span class="header-emoji">🧮️</span> Calculadora</h3>
             </div>
 
             <div class="calc-section">
-                <h3>💱 Conversión Dólar ↔ Bolívares</h3>
+                <h3>💱️ Conversión Dólar ↔ Bolívares</h3>
                 <div class="calc-input-group">
                     <div class="form-group">
                         <label>Monto</label>
@@ -198,7 +249,7 @@
                     </label>
                     <span class="toggle-label">Ingresar monto manual</span>
                 </div>
-                <div id="listInfo" class="info-badge">📋 Usando total seleccionado de la lista</div>
+                <div id="listInfo" class="info-badge">📋️ Usando total seleccionado de la lista</div>
                 <div class="manual-inputs" id="manualInputs">
                     <div class="calc-input-group">
                         <div class="form-group">
@@ -217,7 +268,7 @@
                         </select>
                     </div>
                 </div>
-                <button class="calc-btn" id="calcCoverageBtn">📊 Calcular Cobertura</button>
+                <button class="calc-btn" id="calcCoverageBtn">📊️ Calcular Cobertura</button>
                 <div class="calc-result" id="coverageResult">
                     <div class="calc-result-row">
                         <span class="calc-result-label">Total compra:</span>
@@ -246,7 +297,7 @@
                 </div>
             </div>
             <div class="calc-section">
-                <h3>🧠 Compra Imaginaria</h3>
+                <h3>🧠️ Compra Imaginaria</h3>
                 <p style="color:var(--text-muted); margin-bottom:12px;">
                     ¿Cuánto debes gastar para que te quede exactamente el monto que deseas?
                 </p>
@@ -272,7 +323,7 @@
                         </select>
                     </div>
                 </div>
-                <button class="calc-btn" id="calcImagBtn">🧮 Calcular</button>
+                <button class="calc-btn" id="calcImagBtn">🧮️ Calcular</button>
                 <div class="imaginary-result" id="imaginaryResult">
                     <div style="text-align:center; margin-bottom:10px;">
                         <span class="tag tag-total">COMPRA QUE DEBES HACER</span>
@@ -292,7 +343,7 @@
                             <div class="ic-sub" id="imagCasheaBs">Bs. 0,00</div>
                         </div>
                         <div class="imaginary-card user-card">
-                            <div class="ic-label">💳 Pago inicial</div>
+                            <div class="ic-label">💳️ Pago inicial</div>
                             <div class="ic-value" id="imagUserUsd">$0.00</div>
                             <div class="ic-sub" id="imagUserBs">Bs. 0,00</div>
                         </div>
@@ -344,7 +395,7 @@
                     </div>
                 </div>
                 <button class="calc-btn weight-add-btn" id="weightAddBtn">
-                    ➕ Añadir a la lista
+                    ➕️ Añadir a la lista
                 </button>
             </div>
         </div>
@@ -352,25 +403,25 @@
     <div id="finanzas-view" class="view">
         <div class="finance-container">
             <div class="finance-header">
-                <h3><span class="header-emoji">💰</span> Mis Finanzas y Ahorro</h3>
+                <h3><span class="header-emoji">💰️</span> Mis Finanzas y Ahorro</h3>
             </div>
             <div class="transaction-form card">
-                <h4><span class="header-emoji">📝</span> Registrar movimiento</h4>
+                <h4><span class="header-emoji">📝️</span> Registrar movimiento</h4>
                 <div class="form-row">
                     <div class="form-group"><label>Fecha</label><input type="date" id="transactionDate"></div>
-                    <div class="form-group"><label>Tipo</label><select id="transactionType"><option value="expense">💸 Gasto</option><option value="egreso">💸 Egreso</option><option value="income">💰 Ingreso</option></select></div>
-                    <div class="form-group"><label>Categoría</label><select id="transactionCategory"><option value="comida">🍔 Comida</option><option value="bebida">🥤 Bebida</option><option value="transporte">🚗 Transporte</option><option value="deudas">💳 Deudas</option><option value="servicios">💡 Servicios</option><option value="salario">💼 Salario</option><option value="freelance">💻 Freelance</option><option value="inversion">📈 Inversión</option><option value="ahorro">🐷 Ahorro</option><option value="otros">📦 Otros</option></select></div>
+                    <div class="form-group"><label>Tipo</label><select id="transactionType"><option value="expense">💸️ Gasto</option><option value="egreso">💸️ Egreso</option><option value="income">💰️ Ingreso</option></select></div>
+                    <div class="form-group"><label>Categoría</label><select id="transactionCategory"><option value="comida">🍔️ Comida</option><option value="bebida">🥤️ Bebida</option><option value="transporte">🚗️ Transporte</option><option value="deudas">💳️ Deudas</option><option value="servicios">💡️ Servicios</option><option value="salario">💼️ Salario</option><option value="freelance">💻️ Freelance</option><option value="inversion">📈️ Inversión</option><option value="ahorro">🐷️ Ahorro</option><option value="otros">📦️ Otros</option></select></div>
                 </div>
                 <div class="form-row">
                     <div class="form-group"><label>Monto</label><input type="text" id="transactionAmount" placeholder="0.00" inputmode="numeric"></div>
                     <div class="form-group"><label>Moneda</label><select id="transactionCurrency"><option value="USD">USD ($)</option><option value="BS">Bolívares (Bs.)</option></select></div>
                     <div class="form-group"><label>Descripción</label><input type="text" id="transactionDesc" placeholder="Opcional" maxlength="100"></div>
                 </div>
-                <div style="display:flex; gap:8px;"><button class="btn btn-primary" id="addTransactionBtn">➕ Agregar</button><button class="btn btn-outline" id="useListTotalBtn">📋 Usar mi lista</button></div>
+                <div style="display:flex; gap:8px;"><button class="btn btn-primary" id="addTransactionBtn">➕️ Agregar</button><button class="btn btn-outline" id="useListTotalBtn">📋️ Usar mi lista</button></div>
             </div>
-            <div class="summary-card card"><h4><span class="header-emoji">📊</span> Resumen del mes</h4><div id="monthlySummary"></div></div>
+            <div class="summary-card card"><h4><span class="header-emoji">📊️</span> Resumen del mes</h4><div id="monthlySummary"></div></div>
             <div class="savings-card card" id="savingsCard">
-                <h4 class="savings-title">🎯 Meta de ahorro</h4>
+                <h4 class="savings-title">🎯️ Meta de ahorro</h4>
 
                 <!-- Formulario: crear/editar meta -->
                 <div id="savingsGoalForm">
@@ -384,7 +435,7 @@
                             <input type="text" id="savingsGoalInput" placeholder="0.00" inputmode="decimal">
                         </div>
                         <select id="savingsGoalCurrency"><option value="USD">USD $</option><option value="BS">Bs.</option></select>
-                        <button class="btn btn-primary" id="setSavingsGoalBtn">🎯 Fijar meta</button>
+                        <button class="btn btn-primary" id="setSavingsGoalBtn">🎯️ Fijar meta</button>
                     </div>
                 </div>
 
@@ -401,7 +452,7 @@
                     <div id="savingsProgress"></div>
 
                     <div class="savings-contributions" id="savingsContributionsSection">
-                        <h5 class="savings-subtitle">💰 Abonos</h5>
+                        <h5 class="savings-subtitle">💰️ Abonos</h5>
                         <div id="savingsContributionsList"></div>
                         <div class="savings-add-form">
                             <input type="text" id="savingsContributionAmount" placeholder="Monto" inputmode="decimal">
@@ -411,16 +462,16 @@
                     </div>
                 </div>
             </div>
-            <div class="tips-card card"><h4><span class="header-emoji">💡</span> Tip para ahorrar</h4><div id="savingsTip" class="tip-text"></div></div>
+            <div class="tips-card card"><h4><span class="header-emoji">💡️</span> Tip para ahorrar</h4><div id="savingsTip" class="tip-text"></div></div>
             <div class="card" id="debtsCard">
-                <h4><span class="header-emoji">💳</span> Gestión de Deudas</h4>
+                <h4><span class="header-emoji">💳️</span> Gestión de Deudas</h4>
                 <div id="debtsEmpty" class="empty-state">
-                    <div class="empty-icon" style="font-size:2rem;">📭</div>
+                    <div class="empty-icon" style="font-size:2rem;">📭️</div>
                     <p>No hay deudas registradas. Añade una deuda para empezar a controlar tus pagos.</p>
                 </div>
                 <div id="debtsList"></div>
                 <div class="debt-form-toggle" id="toggleDebtFormBtn">
-                    <span>➕ Registrar nueva deuda</span>
+                    <span>➕️ Registrar nueva deuda</span>
                     <span class="toggle-icon" id="debtFormToggleIcon">▼</span>
                 </div>
                 <div id="debtForm" class="debt-form" style="display:none;">
@@ -430,38 +481,38 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group"><label>Moneda</label><select id="debtCurrency"><option value="USD">USD $</option><option value="BS">Bs.</option></select></div>
-                        <div class="form-group"><label>Categoría</label><select id="debtCategory"><option value="deudas">💳 Deudas</option><option value="servicios">💡 Servicios</option><option value="comida">🍔 Comida</option><option value="transporte">🚗 Transporte</option><option value="otros">📦 Otros</option></select></div>
+                        <div class="form-group"><label>Categoría</label><select id="debtCategory"><option value="deudas">💳️ Deudas</option><option value="servicios">💡️ Servicios</option><option value="comida">🍔️ Comida</option><option value="transporte">🚗️ Transporte</option><option value="otros">📦️ Otros</option></select></div>
                         <div class="form-group"><label>Cuotas</label><input type="text" id="debtInstallments" placeholder="1" inputmode="numeric" value="1"></div>
                     </div>
                     <div class="form-row">
                         <div class="form-group"><label>Fecha</label><input type="date" id="debtDate"></div>
                     </div>
-                    <button class="btn btn-primary" id="addDebtBtn">💳 Registrar Deuda</button>
+                    <button class="btn btn-primary" id="addDebtBtn">💳️ Registrar Deuda</button>
                 </div>
                 <div id="debtSummary" class="debt-summary" style="display:none;"></div>
             </div>
             <div class="card">
-                <h4><span class="header-emoji">📋</span> Historial de Transacciones</h4>
+                <h4><span class="header-emoji">📋️</span> Historial de Transacciones</h4>
                 <div id="transactionHistory"></div>
             </div>
             <div class="card">
-                <h4><span class="header-emoji">📊</span> Gráficos</h4>
+                <h4><span class="header-emoji">📊️</span> Gráficos</h4>
                 <div id="chartsContainer"></div>
             </div>
             <div class="card">
-                <h4><span class="header-emoji">📈</span> Estadísticas</h4>
+                <h4><span class="header-emoji">📈️</span> Estadísticas</h4>
                 <div id="statisticsContainer"></div>
             </div>
             <div class="card">
-                <h4><span class="header-emoji">📤</span> Exportar datos</h4>
+                <h4><span class="header-emoji">📤️</span> Exportar datos</h4>
                 <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                    <button class="btn btn-sm btn-primary" id="exportCsvBtn" style="flex:1;">📥 Exportar CSV</button>
-                    <button class="btn btn-sm btn-outline" id="exportJsonBtn" style="flex:1;">📥 Exportar JSON</button>
-                    <button class="btn btn-sm btn-outline" id="importCsvBtn" style="flex:1;">📤 Importar CSV</button>
+                    <button class="btn btn-sm btn-primary" id="exportCsvBtn" style="flex:1;">📥️ Exportar CSV</button>
+                    <button class="btn btn-sm btn-outline" id="exportJsonBtn" style="flex:1;">📥️ Exportar JSON</button>
+                    <button class="btn btn-sm btn-outline" id="importCsvBtn" style="flex:1;">📤️ Importar CSV</button>
                 </div>
             </div>
             <div class="card">
-                <h4><span class="header-emoji">🔔</span> Recordatorios</h4>
+                <h4><span class="header-emoji">🔔️</span> Recordatorios</h4>
                 <div class="notif-row">
                     <span class="notif-label">Notificaciones</span>
                     <label class="toggle-switch">
@@ -491,8 +542,8 @@
                 <h4><span class="header-emoji">☁️</span> Sincronización (Backup / Restore)</h4>
                 <p style="color:var(--text-muted);margin-bottom:10px;">Guarda una copia de todos tus datos o restaura desde una copia anterior.</p>
                 <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                    <button class="btn btn-sm btn-primary" id="backupBtn" style="flex:1;">💾 Descargar Backup</button>
-                    <button class="btn btn-sm btn-outline" id="restoreBtn" style="flex:1;">📂 Restaurar Backup</button>
+                    <button class="btn btn-sm btn-primary" id="backupBtn" style="flex:1;">💾️ Descargar Backup</button>
+                    <button class="btn btn-sm btn-outline" id="restoreBtn" style="flex:1;">📂️ Restaurar Backup</button>
                 </div>
                 <input type="file" id="restoreFileInput" accept=".json" style="display:none">
                 <input type="file" id="importCsvInput" accept=".csv" style="display:none">
@@ -515,7 +566,7 @@
             <div class="cal-summary-item"><span class="cal-summary-label">Ingresos</span><span class="cal-summary-value cal-income" id="calIncome">$0.00</span></div>
             <div class="cal-summary-item"><span class="cal-summary-label">Gastos</span><span class="cal-summary-value cal-expense" id="calExpense">$0.00</span></div>
             <div class="cal-summary-item"><span class="cal-summary-label">Balance</span><span class="cal-summary-value cal-balance" id="calBalance">$0.00</span></div>
-            <button class="cal-export-btn" id="calExportBtn" title="Exportar mes">📥</button>
+            <button class="cal-export-btn" id="calExportBtn" title="Exportar mes">📥️</button>
         </div>
         <div class="cal-day-panel" id="calDayPanel">
             <div class="cal-day-header">
@@ -529,8 +580,8 @@
             <div class="cal-quick-form" id="calQuickForm">
                 <div class="qf-title">Registrar movimiento del día</div>
                 <div class="qf-row">
-                    <select id="qfType"><option value="expense">💸 Gasto</option><option value="egreso">💸 Egreso</option><option value="income">💰 Ingreso</option></select>
-                    <select id="qfCategory"><option value="comida">🍔 Comida</option><option value="bebida">🥤 Bebida</option><option value="transporte">🚗 Transporte</option><option value="deudas">💳 Deudas</option><option value="servicios">💡 Servicios</option><option value="salario">💼 Salario</option><option value="freelance">💻 Freelance</option><option value="inversion">📈 Inversión</option><option value="ahorro">🐷 Ahorro</option><option value="otros">📦 Otros</option></select>
+                    <select id="qfType"><option value="expense">💸️ Gasto</option><option value="egreso">💸️ Egreso</option><option value="income">💰️ Ingreso</option></select>
+                    <select id="qfCategory"><option value="comida">🍔️ Comida</option><option value="bebida">🥤️ Bebida</option><option value="transporte">🚗️ Transporte</option><option value="deudas">💳️ Deudas</option><option value="servicios">💡️ Servicios</option><option value="salario">💼️ Salario</option><option value="freelance">💻️ Freelance</option><option value="inversion">📈️ Inversión</option><option value="ahorro">🐷️ Ahorro</option><option value="otros">📦️ Otros</option></select>
                 </div>
                 <div class="qf-row">
                     <div class="qf-amount-wrap">
@@ -542,12 +593,12 @@
                     <input type="text" id="qfDesc" placeholder="Descripción (opcional)" maxlength="100">
                 </div>
                 <div class="qf-actions">
-                    <button class="btn btn-primary" id="qfSaveBtn">✓ Agregar</button>
+                    <button class="btn btn-primary" id="qfSaveBtn">✓️ Agregar</button>
                     <button class="btn btn-outline" id="qfCancelBtn">Cancelar</button>
                 </div>
             </div>
             <div class="cal-day-list" id="calDayList">
-                <div class="empty-state"><div class="empty-icon">📅</div><p>Toca un día del calendario para ver sus transacciones.</p></div>
+                <div class="empty-state"><div class="empty-icon">📅️</div><p>Toca un día del calendario para ver sus transacciones.</p></div>
             </div>
         </div>
         <div class="cal-month-picker" id="calMonthPicker">
@@ -557,9 +608,9 @@
     <div id="faq-view" class="view">
         <div class="faq-container">
         <div class="faq-header">
-            <h3><span class="header-emoji">❓</span> Preguntas Frecuentes</h3>
+            <h3><span class="header-emoji">❓️</span> Preguntas Frecuentes</h3>
         </div>
-        <div class="faq-hero-icon">🛒</div>
+        <div class="faq-hero-icon">🛒️</div>
         <p style="text-align:center;color:var(--text-muted);margin-bottom:20px;">Todo lo que necesitas saber para usar la app</p>
         <div class="faq-list">
 
@@ -569,9 +620,9 @@
                 <div class="faq-answer">
                     Es una herramienta <strong>todo en uno</strong> que combina tres funciones esenciales:
                     <ul>
-                        <li><strong>📝 Lista de mercado</strong> — Crea y gestiona tus listas de compras con precios en $ y Bs., escáner de códigos de barras y presupuestos.</li>
-                        <li><strong>💰 Finanzas personales</strong> — Lleva el control de tus ingresos y gastos con gráficos, estadísticas y exportación de datos.</li>
-                        <li><strong>📅 Calendario financiero</strong> — Visualiza tus movimientos en un calendario interactivo con mapa de calor por colores.</li>
+                        <li><strong>📝️ Lista de mercado</strong> — Crea y gestiona tus listas de compras con precios en $ y Bs., escáner de códigos de barras y presupuestos.</li>
+                        <li><strong>💰️ Finanzas personales</strong> — Lleva el control de tus ingresos y gastos con gráficos, estadísticas y exportación de datos.</li>
+                        <li><strong>📅️ Calendario financiero</strong> — Visualiza tus movimientos en un calendario interactivo con mapa de calor por colores.</li>
                     </ul>
                     Todo en una sola app, sin conexión a internet y completamente gratis.
                 </div>
@@ -589,9 +640,9 @@
                         <li>Selecciona tu <strong>nivel de Cashea</strong> (cuánto puedes financiar, según tu perfil).</li>
                         <li>La calculadora te muestra:
                             <ul>
-                                <li>💰 Cuánto debes <strong>pagar al contado</strong> de tu bolsillo.</li>
-                                <li>💳 Cuánto se <strong>financia con Cashea</strong>.</li>
-                                <li>💵 <strong>Lo que te sobra</strong> de tu presupuesto después de la compra.</li>
+                                <li>💰️ Cuánto debes <strong>pagar al contado</strong> de tu bolsillo.</li>
+                                <li>💳️ Cuánto se <strong>financia con Cashea</strong>.</li>
+                                <li>💵️ <strong>Lo que te sobra</strong> de tu presupuesto después de la compra.</li>
                             </ul>
                         </li>
                     </ol>
@@ -609,7 +660,7 @@
             <div class="faq-item">
                 <div class="faq-question">¿Cómo uso el escáner de códigos de barras?</div>
                 <div class="faq-answer">
-                    <p>Al añadir un producto a tu lista, verás un botón 📷 junto al campo de código de barras. Al presionarlo:</p>
+                    <p>Al añadir un producto a tu lista, verás un botón 📷️ junto al campo de código de barras. Al presionarlo:</p>
                     <ol>
                         <li>La app pedirá permiso para usar la cámara.</li>
                         <li>Apunta el código de barras del producto dentro del recuadro guía.</li>
@@ -626,11 +677,11 @@
                 <div class="faq-answer">
                     <p>La sección de finanzas te permite llevar un registro completo de tus ingresos y gastos:</p>
                     <ul>
-                        <li><strong>➕ Añadir movimientos</strong> — Registra ingresos o gastos con categoría, monto, moneda ($ o Bs.) y descripción.</li>
-                        <li><strong>📊 Gráficos</strong> — Gráfico de barras (6 meses) y gráfico de dona por categorías para visualizar tus hábitos de gasto.</li>
-                        <li><strong>📈 Estadísticas</strong> — Dashboard con 8 indicadores: ingresos totales, gastos totales, balance, tasa de ahorro, promedios mensuales, categoría más usada y resumen del mes actual.</li>
-                        <li><strong>📋 Historial</strong> — Tabla con filtros (todo/ingresos/gastos), búsqueda, y opción de borrar individual o en masa.</li>
-                        <li><strong>📤 Exportación</strong> — Descarga tus transacciones en CSV o JSON.</li>
+                        <li><strong>➕️ Añadir movimientos</strong> — Registra ingresos o gastos con categoría, monto, moneda ($ o Bs.) y descripción.</li>
+                        <li><strong>📊️ Gráficos</strong> — Gráfico de barras (6 meses) y gráfico de dona por categorías para visualizar tus hábitos de gasto.</li>
+                        <li><strong>📈️ Estadísticas</strong> — Dashboard con 8 indicadores: ingresos totales, gastos totales, balance, tasa de ahorro, promedios mensuales, categoría más usada y resumen del mes actual.</li>
+                        <li><strong>📋️ Historial</strong> — Tabla con filtros (todo/ingresos/gastos), búsqueda, y opción de borrar individual o en masa.</li>
+                        <li><strong>📤️ Exportación</strong> — Descarga tus transacciones en CSV o JSON.</li>
                     </ul>
                 </div>
             </div>
@@ -658,7 +709,7 @@
                 <div class="faq-answer">
                     <p>Puedes configurar un <strong>recordatorio diario</strong> para no olvidar registrar tus gastos:</p>
                     <ul>
-                        <li>Ve a Finanzas y busca la sección de notificaciones (🔔).</li>
+                        <li>Ve a Finanzas y busca la sección de notificaciones (🔔️).</li>
                         <li>Activa el interruptor y selecciona la <strong>hora</strong> a la que quieres recibir el recordatorio.</li>
                         <li>Opcionalmente, activa el <strong>recordatorio diario</strong> para que se repita todos los días.</li>
                     </ul>
@@ -672,8 +723,8 @@
                 <div class="faq-answer">
                     <p>La app incluye un sistema de <strong>sincronización completo</strong>:</p>
                     <ul>
-                        <li><strong>📤 Exportar</strong> — Genera un archivo JSON con todas tus listas, transacciones, metas de ahorro, tasa de cambio y preferencias. Puedes descargarlo o copiarlo al portapapeles.</li>
-                        <li><strong>📥 Importar</strong> — Pega el código JSON de respaldo y la app restaurará todos tus datos automáticamente.</li>
+                        <li><strong>📤️ Exportar</strong> — Genera un archivo JSON con todas tus listas, transacciones, metas de ahorro, tasa de cambio y preferencias. Puedes descargarlo o copiarlo al portapapeles.</li>
+                        <li><strong>📥️ Importar</strong> — Pega el código JSON de respaldo y la app restaurará todos tus datos automáticamente.</li>
                     </ul>
                     <p>Esto te permite migrar tus datos entre dispositivos fácilmente.</p>
                 </div>
@@ -714,11 +765,11 @@
 
         <!-- ===== CONTACTO WHATSAPP ===== -->
         <div class="faq-contact">
-            <div class="faq-contact-icon">💬</div>
+            <div class="faq-contact-icon">💬️</div>
             <h3>¿No encuentras lo que buscas?</h3>
             <p>Estoy aquí para ayudarte. Escríbeme por WhatsApp si tienes dudas, sugerencias o quieres reportar algún inconveniente con la app.</p>
             <a href="https://wa.me/584129414242" target="_blank" rel="noopener noreferrer" class="faq-whatsapp-btn">
-                <span class="wa-icon">📲</span>
+                <span class="wa-icon">📲️</span>
                 <span class="wa-text">Escribir por WhatsApp</span>
                 <span class="wa-arrow">→</span>
             </a>
@@ -729,7 +780,7 @@
     <div id="donaciones-view" class="view">
         <div class="donations-container">
             <div class="donations-hero">
-                <div class="donations-hero-icon">💛</div>
+                <div class="donations-hero-icon">💛️</div>
                 <h2 class="donations-title">Apoya el proyecto</h2>
                 <p class="donations-subtitle">Si esta app te es útil, considera hacer una donación. Cada granito de arena ayuda a mantener y mejorar la aplicación.</p>
             </div>
@@ -743,31 +794,31 @@
                             <span class="donation-card-value">0412-9414242</span>
                             <span class="donation-card-desc">BNC · V21042609 · 0191</span>
                         </div>
-                        <span class="donation-copy-hint">📋</span>
+                        <span class="donation-copy-hint">📋️</span>
                     </div>
                 </div>
                 <div class="donation-card" data-copy="eliezerdavidmalave@gmail.com">
                     <div class="donation-card-bg"></div>
                     <div class="donation-card-content">
-                        <div class="donation-card-icon">💲</div>
+                        <div class="donation-card-icon">💲️</div>
                         <div class="donation-card-info">
                             <span class="donation-card-label">PayPal</span>
                             <span class="donation-card-value">eliezerdavidmalave@gmail.com</span>
                             <span class="donation-card-desc">Enviar a familiares y amigos</span>
                         </div>
-                        <span class="donation-copy-hint">📋</span>
+                        <span class="donation-copy-hint">📋️</span>
                     </div>
                 </div>
                 <div class="donation-card" data-copy="26760831">
                     <div class="donation-card-bg"></div>
                     <div class="donation-card-content">
-                        <div class="donation-card-icon">💳</div>
+                        <div class="donation-card-icon">💳️</div>
                         <div class="donation-card-info">
                             <span class="donation-card-label">Binance Pay</span>
                             <span class="donation-card-value">ID: 26760831</span>
                             <span class="donation-card-desc">Pago directo desde Binance</span>
                         </div>
-                        <span class="donation-copy-hint">📋</span>
+                        <span class="donation-copy-hint">📋️</span>
                     </div>
                 </div>
                 <div class="donation-card" data-copy="0x76589b73d3526b122d737ca834c6a8ec382bf10b">
@@ -779,12 +830,12 @@
                             <span class="donation-card-value">0x7658...f10b</span>
                             <span class="donation-card-desc">Binance Smart Chain (BEP-20)</span>
                         </div>
-                        <span class="donation-copy-hint">📋</span>
+                        <span class="donation-copy-hint">📋️</span>
                     </div>
                 </div>
             </div>
             <div class="donations-footer">
-                <div class="donations-footer-icon">🙌</div>
+                <div class="donations-footer-icon">🙌️</div>
                 <p class="donations-footer-text">¡Gracias por tu apoyo!</p>
                 <p class="donations-footer-sub">Cada contribución ayuda a mantener la app activa y seguir añadiendo nuevas funciones.</p>
             </div>
@@ -795,13 +846,13 @@
 <!-- MODALES (originales) -->
 <div class="modal-overlay" id="importModal">
     <div class="modal">
-        <h3>📥 Importar Lista</h3>
+        <h3>📥️ Importar Lista</h3>
         <p style="color:var(--text-muted); margin-bottom:12px;">
             Selecciona un archivo <strong>.json</strong> para importar:
         </p>
         <div style="margin-bottom:10px;">
             <input type="file" id="importFileInput" accept=".json,application/json" style="display:none;">
-            <button class="btn btn-outline" id="selectImportFileBtn" style="width:100%;">📁 Seleccionar archivo JSON</button>
+            <button class="btn btn-outline" id="selectImportFileBtn" style="width:100%;">📁️ Seleccionar archivo JSON</button>
         </div>
         <div style="text-align:center;">
             <button class="btn btn-outline" id="closeImportBtn">Cancelar</button>
@@ -854,8 +905,8 @@
 <div class="modal-overlay" id="scannerOverlay">
     <div class="scanner-container">
         <div class="scanner-header">
-            <span class="scanner-title">📷 Escanear código</span>
-            <button class="scanner-close" id="scannerCloseBtn">✕</button>
+            <span class="scanner-title">📷️ Escanear código</span>
+            <button class="scanner-close" id="scannerCloseBtn">✕️</button>
         </div>
         <div class="scanner-viewport">
             <video id="scannerVideo" playsinline autoplay muted></video>
@@ -867,14 +918,14 @@
 <div class="modal-overlay" id="txDetailModal">
     <div class="modal">
         <div class="modal-handle"></div>
-        <h3 id="txDetailTitle">📋 Detalle de Transacción</h3>
+        <h3 id="txDetailTitle">📋️ Detalle de Transacción</h3>
         <div id="txDetailBody" class="tx-detail-body"></div>
         <div class="modal-actions">
             <button class="btn btn-primary" id="closeTxDetailBtn">Cerrar</button>
         </div>
     </div>
 </div>
-<div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="dist/app.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

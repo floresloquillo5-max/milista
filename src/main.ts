@@ -326,7 +326,29 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   window.addEventListener('online', updateOnlineStatus);
   window.addEventListener('offline', updateOnlineStatus);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) updateOnlineStatus();
+  });
+  setInterval(updateOnlineStatus, 3000);
   updateOnlineStatus();
+
+  /* ===== FORCE COLOR EMOJI (Chrome desktop fix) ===== */
+  (function forceColorEmoji(): void {
+    if (!CSS.supports?.('font-variant-emoji', 'emoji')) {
+      const emojiRx = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2300}-\u{23FF}]/u;
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      const done = new Set<HTMLElement>();
+      let node: Text | null;
+      while ((node = walker.nextNode() as Text | null)) {
+        if (!emojiRx.test(node.textContent || '')) continue;
+        const p = node.parentElement;
+        if (p && !done.has(p)) {
+          done.add(p);
+          p.style.setProperty('font-family', "'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif", 'important');
+        }
+      }
+    }
+  })();
 
   /* ===== AUTO-BACKUP REMINDER (every 7 days) ===== */
   const lastBackup = getLastBackupDate();

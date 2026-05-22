@@ -95,6 +95,7 @@ export function renderProducts(): void {
       className: 'btn-icon product-edit-btn',
       'data-action': 'edit',
       'data-id': String(p.id),
+      'aria-label': 'Editar ' + p.name,
       title: 'Editar',
     });
     editBtn.textContent = '✏️';
@@ -102,6 +103,7 @@ export function renderProducts(): void {
       className: 'btn-icon product-delete-btn',
       'data-action': 'delete',
       'data-id': String(p.id),
+      'aria-label': 'Eliminar ' + p.name,
       title: 'Eliminar',
     });
     deleteBtn.textContent = '🗑️';
@@ -172,8 +174,8 @@ export function enableEditProduct(id: number): void {
       <div class="edit-field"><label>Und</label><input type="text" id="edit_unit_${id}" value="${escapeHtml(p.unit)}"></div>
       <div class="edit-field"><label>Precio</label><input type="text" id="edit_price_${id}" value="${p.price.toFixed(2)}" inputmode="numeric"></div>
       <div class="edit-actions">
-        <button class="btn btn-sm btn-primary" data-id="${id}" data-action="saveEdit">💾 Guardar</button>
-        <button class="btn btn-sm btn-outline" data-id="${id}" data-action="cancelEdit">✕ Cancelar</button>
+        <button class="btn btn-sm btn-primary" data-id="${id}" data-action="saveEdit" aria-label="Guardar cambios">💾 Guardar</button>
+        <button class="btn btn-sm btn-outline" data-id="${id}" data-action="cancelEdit" aria-label="Cancelar edición">✕ Cancelar</button>
       </div>
     </div>`;
 }

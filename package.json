@@ -3,7 +3,8 @@
   "version": "3.0.0",
   "description": "Mi Mercado + Cashea + Finanzas",
   "scripts": {
-    "build": "npx tsc --noEmit && npx esbuild src/main.ts --bundle --outfile=dist/app.js --format=iife --minify",
+    "build": "npx tsc --noEmit && npx esbuild src/main.ts --bundle --outfile=dist/app.js --format=iife --minify --metafile=dist/meta.json",
+    "analyze": "npx esbuild-visualizer --metadata dist/meta.json --open",
     "watch": "npx esbuild src/main.ts --bundle --outfile=dist/app.js --format=esm --watch",
     "test": "jest",
     "test:watch": "jest --watch",

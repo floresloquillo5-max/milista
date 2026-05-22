@@ -50,3 +50,7 @@ export function getCategoryIcon(cat: string): string {
 export function toISOShortDate(date: Date = new Date()): string {
   return date.toISOString().split('T')[0];
 }
+
+export function productPlaceholderImage(): string {
+  return 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="#1A1A2E" width="100" height="100" rx="12"/><text x="50" y="50" text-anchor="middle" dominant-baseline="central" font-size="40">📦</text><text x="50" y="75" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#888">Sin imagen</text></svg>');
+}
