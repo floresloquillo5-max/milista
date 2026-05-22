@@ -1,4 +1,4 @@
-const CACHE = 'mi-mercado-v3';
+const CACHE = 'mi-mercado-v4';
 const STATIC_URLS = [
   '/',
   '/index.html',
@@ -9,29 +9,60 @@ const STATIC_URLS = [
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open(CACHE).then(function(cache) {
-      return cache.addAll(STATIC_URLS);
-    })
+    (async () => {
+      const cache = await caches.open(CACHE);
+      const results = await Promise.allSettled(
+        STATIC_URLS.map(url =>
+          cache.add(url).catch(() => {
+            // If one asset fails, try with a plain fetch + put
+            return fetch(url).then(r => {
+              if (r.ok) cache.put(url, r);
+            }).catch(() => {});
+          })
+        )
+      );
+      self.skipWaiting();
+    })()
   );
-  self.skipWaiting();
 });
 
 self.addEventListener('activate', function(event) {
   event.waitUntil(
-    caches.keys().then(function(keys) {
-      return Promise.all(
-        keys.filter(function(k) { return k !== CACHE; }).map(function(k) { return caches.delete(k); })
+    (async () => {
+      const keys = await caches.keys();
+      await Promise.all(
+        keys.filter(k => k !== CACHE).map(k => caches.delete(k))
       );
-    })
+      await self.clients.claim();
+    })()
   );
-  self.clients.claim();
 });
 
-self.addEventListener('fetch', function(event) {
-  var request = event.request;
-  var url = new URL(request.url);
+// Network-first for same-origin, with offline fallback to cache
+async function networkFirstWithCacheFallback(request) {
+  try {
+    const response = await fetch(request);
+    if (response.ok) {
+      const cache = await caches.open(CACHE);
+      cache.put(request, response.clone());
+    }
+    return response;
+  } catch {
+    const cached = await caches.match(request);
+    if (cached) return cached;
+    // Final fallback: serve the cached index.html for any navigation
+    if (request.mode === 'navigate') {
+      return caches.match('/index.html');
+    }
+    throw new Error('offline');
+  }
+}
 
-  // API calls: network-first with fallback to cache
+self.addEventListener('fetch', function(event) {
+  const request = event.request;
+  const url = new URL(request.url);
+
+  // API/external calls: network-first with cache fallback
   if (url.hostname !== self.location.hostname) {
     event.respondWith(
       fetch(request).then(function(response) {
@@ -45,17 +76,7 @@ self.addEventListener('fetch', function(event) {
     return;
   }
 
-  // Static assets: cache-first
-  event.respondWith(
-    caches.match(request).then(function(cached) {
-      var fetchPromise = fetch(request).then(function(response) {
-        if (response.ok) {
-          var clone = response.clone();
-          caches.open(CACHE).then(function(cache) { cache.put(request, clone); });
-        }
-        return response;
-      }).catch(function() { return cached; });
-      return cached || fetchPromise;
-    })
-  );
+  // For same-origin: use network-first with cache fallback
+  // This ensures fresh content when online, and cached content when offline
+  event.respondWith(networkFirstWithCacheFallback(request));
 });
