@@ -160,19 +160,45 @@ function setNickname(nick: string): void {
   }
 }
 
+function setConnectionStatus(ok: boolean, msg?: string): void {
+  const el = document.getElementById('chatConnectionStatus');
+  if (!el) return;
+  if (ok) {
+    el.innerHTML = '🟢 Conectado';
+    el.className = 'chat-status-ok';
+  } else {
+    el.innerHTML = `🔴 ${msg || 'Desconectado'}`;
+    el.className = 'chat-status-err';
+  }
+}
+
 function connectAbly(): void {
   if (!ABLY_CONFIG.key) {
-    console.warn('Chat: Ably API key not configured. Set ABLY_CONFIG.key in src/config/constants.ts');
+    setConnectionStatus(false, 'API key no configurada');
     return;
   }
 
   try {
     const realtime = new Ably.Realtime({ key: ABLY_CONFIG.key });
+
+    realtime.connection.on('connected', () => {
+      setConnectionStatus(true);
+    });
+
+    realtime.connection.on('failed', (err) => {
+      setConnectionStatus(false, 'Error de conexión: ' + err.reason?.message);
+    });
+
+    realtime.connection.on('disconnected', () => {
+      setConnectionStatus(false, 'Reconectando...');
+    });
+
     ablyChannel = realtime.channels.get(ABLY_CONFIG.channelName);
     ablyChannel.subscribe('message', (message: Ably.InboundMessage) => {
       receiveMessage(message.data);
     });
   } catch (err) {
+    setConnectionStatus(false, 'Error al conectar');
     console.error('Failed to connect to Ably:', err);
   }
 }
