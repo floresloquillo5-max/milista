@@ -1,5 +1,6 @@
 import * as Ably from 'ably';
 import { ABLY_CONFIG } from '../config/constants';
+import { showConfirmModal } from '../utils/dom';
 
 interface ChatMessage {
   id: string;
@@ -220,10 +221,15 @@ function connectAbly(): void {
 }
 
 function clearChatHistory(): void {
-  if (confirm('¿Borrar todo el historial del chat?')) {
-    saveMessages([]);
-    renderMessages();
-  }
+  showConfirmModal(
+    '🗑️ Borrar historial',
+    '¿Estás seguro? Esto solo borra los mensajes de tu dispositivo. Los demás usuarios aún verán los suyos.',
+    'Borrar',
+    () => {
+      saveMessages([]);
+      renderMessages();
+    }
+  );
 }
 
 export function setupChat(): void {
