@@ -188,15 +188,6 @@ body {
   cursor: pointer;
   transition: all 0.3s;
 }
-.header-top h1 svg {
-  vertical-align: middle;
-  margin-right: 4px;
-}
-
-.menu-btn svg {
-  pointer-events: none;
-}
-
 .theme-toggle svg {
   vertical-align: middle;
   display: inline-block;
@@ -235,15 +226,8 @@ body {
 }
 
 .hcol-icon {
-  width: 18px;
-  height: 18px;
+  font-size: 1.2rem;
   flex-shrink: 0;
-  vertical-align: middle;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  fill: none;
 }
 
 .hcol-value {
@@ -1377,14 +1361,8 @@ body {
 }
 
 .menu-btn .menu-icon {
-  width: 24px;
-  height: 24px;
-  display: block;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  fill: none;
+  font-size: 1.5rem;
+  line-height: 1;
 }
 
 .header-icon {
