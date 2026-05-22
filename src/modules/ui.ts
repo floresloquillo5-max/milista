@@ -55,12 +55,16 @@ export function setupMenu(): void {
 }
 
 export function setupFaq(): void {
-  document.querySelectorAll('.faq-question').forEach(q => {
-    q.addEventListener('click', () => {
-      const item = q.closest('.faq-item');
-      if (!item) return;
-      item.classList.toggle('open');
-    });
+  const container = document.getElementById('faq-view');
+  if (!container) return;
+  container.addEventListener('click', (e: Event) => {
+    const question = (e.target as HTMLElement).closest('.faq-question');
+    if (!question) return;
+    const item = question.closest('.faq-item') as HTMLElement | null;
+    if (!item) return;
+    const answer = item.querySelector('.faq-answer') as HTMLElement | null;
+    if (!answer) return;
+    item.classList.toggle('open');
   });
 }
 
