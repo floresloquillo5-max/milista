@@ -177,6 +177,28 @@ function setConnectionStatus(ok: boolean, msg?: string): void {
   }
 }
 
+async function fetchHistory(): Promise<void> {
+  if (!ablyChannel) return;
+  try {
+    const historyPage = await ablyChannel.history({ limit: 100 });
+    const historyMsgs: ChatMessage[] = [];
+    historyPage.items.forEach((item: Ably.InboundMessage) => {
+      if (item.data) historyMsgs.push(item.data as ChatMessage);
+    });
+    if (historyMsgs.length === 0) return;
+    historyMsgs.sort((a, b) => a.timestamp - b.timestamp);
+    const local = loadMessages();
+    const merged = [...local];
+    for (const hMsg of historyMsgs) {
+      if (!merged.some(m => m.id === hMsg.id)) merged.push(hMsg);
+    }
+    merged.sort((a, b) => a.timestamp - b.timestamp);
+    if (merged.length > MAX_MESSAGES) merged.splice(0, merged.length - MAX_MESSAGES);
+    saveMessages(merged);
+    renderMessages();
+  } catch { /* history not available — enable persistence in Ably dashboard */ }
+}
+
 function connectAbly(): void {
   if (!ABLY_CONFIG.key) {
     setConnectionStatus(false, 'API key no configurada');
@@ -200,7 +222,10 @@ function connectAbly(): void {
     };
 
     conn.on('connecting', () => setConnectionStatus(false, 'Conectando...'));
-    conn.on('connected', () => setConnectionStatus(true));
+    conn.on('connected', () => {
+      setConnectionStatus(true);
+      setTimeout(fetchHistory, 2000);
+    });
     conn.on('failed', (err: { reason?: { message?: string } }) => {
       setConnectionStatus(false, err?.reason?.message || 'Error de conexión');
     });
