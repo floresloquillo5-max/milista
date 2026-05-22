@@ -1,5 +1,5 @@
-const CACHE = 'mi-mercado-v7';
-const API_CACHE = 'mi-mercado-api-v3';
+const CACHE = 'finova-v1';
+const API_CACHE = 'finova-api-v1';
 const BASE = self.location.pathname.replace(/\/sw\.js$/, '');
 
 const STATIC_URLS = [

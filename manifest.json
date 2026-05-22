@@ -1,6 +1,6 @@
 {
-  "name": "Mi Mercado + Cashea + Finanzas",
-  "short_name": "Mi Mercado",
+  "name": "Finova",
+  "short_name": "Finova",
   "description": "Lista de compras inteligente con finanzas personales, calculadora Cashea, calendario financiero y más",
   "start_url": "index.html",
   "display": "standalone",

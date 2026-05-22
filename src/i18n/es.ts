@@ -1,7 +1,7 @@
 const es = {
   app: {
-    name: 'Mi Mercado + Cashea + Finanzas',
-    shortName: 'Mi Mercado',
+    name: 'Finova',
+    shortName: 'Finova',
     offline: 'Sin conexión',
   },
   nav: {
