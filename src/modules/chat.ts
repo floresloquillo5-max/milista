@@ -160,12 +160,16 @@ function setNickname(nick: string): void {
   }
 }
 
+let ablyRealtime: Ably.Realtime | null = null;
+let connectTimeout: ReturnType<typeof setTimeout> | null = null;
+
 function setConnectionStatus(ok: boolean, msg?: string): void {
   const el = document.getElementById('chatConnectionStatus');
   if (!el) return;
   if (ok) {
     el.innerHTML = '🟢 Conectado';
     el.className = 'chat-status-ok';
+    if (connectTimeout) { clearTimeout(connectTimeout); connectTimeout = null; }
   } else {
     el.innerHTML = `🔴 ${msg || 'Desconectado'}`;
     el.className = 'chat-status-err';
@@ -179,27 +183,38 @@ function connectAbly(): void {
   }
 
   try {
-    const realtime = new Ably.Realtime({ key: ABLY_CONFIG.key });
+    ablyRealtime = new Ably.Realtime({ key: ABLY_CONFIG.key });
+    const conn = ablyRealtime.connection;
 
-    realtime.connection.on('connected', () => {
+    conn.on('connecting', () => {
+      setConnectionStatus(false, 'Conectando...');
+    });
+
+    conn.on('connected', () => {
       setConnectionStatus(true);
     });
 
-    realtime.connection.on('failed', (err) => {
-      setConnectionStatus(false, 'Error de conexión: ' + err.reason?.message);
+    conn.on('failed', (err: { reason?: { message?: string } }) => {
+      setConnectionStatus(false, err?.reason?.message || 'Error de conexión');
     });
 
-    realtime.connection.on('disconnected', () => {
+    conn.on('disconnected', () => {
       setConnectionStatus(false, 'Reconectando...');
     });
 
-    ablyChannel = realtime.channels.get(ABLY_CONFIG.channelName);
+    connectTimeout = setTimeout(() => {
+      if (conn.state !== 'connected') {
+        setConnectionStatus(false, 'Tiempo de espera agotado. ¿Firewall o bloqueo de red?');
+      }
+    }, 15000);
+
+    ablyChannel = ablyRealtime.channels.get(ABLY_CONFIG.channelName);
     ablyChannel.subscribe('message', (message: Ably.InboundMessage) => {
       receiveMessage(message.data);
     });
   } catch (err) {
-    setConnectionStatus(false, 'Error al conectar');
-    console.error('Failed to connect to Ably:', err);
+    setConnectionStatus(false, 'Error al iniciar Ably');
+    console.error('Ably init error:', err);
   }
 }
 
