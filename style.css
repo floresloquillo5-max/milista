@@ -381,11 +381,12 @@ body {
 }
 
 .btn-outline {
-  background: transparent;
-  border: 1.5px solid var(--border);
-  color: var(--text-muted);
+  background: var(--bg-input);
+  border: 1.5px solid var(--border-light);
+  color: var(--text);
 }
 .btn-outline:hover {
+  background: var(--bg-hover);
   border-color: var(--gold);
   color: var(--gold);
   box-shadow: 0 0 16px var(--gold-glow);
