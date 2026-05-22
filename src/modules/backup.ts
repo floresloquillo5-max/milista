@@ -17,7 +17,7 @@ export function backupAllData(): void {
   };
 
   const json = JSON.stringify(data, null, 2);
-  downloadFile(json, `backup_finova_${new Date().toISOString().split('T')[0]}.json`, 'application/json');
+  downloadFile(json, `backup_listamigo_${new Date().toISOString().split('T')[0]}.json`, 'application/json');
   showToast('💾 Backup descargado');
 }
 

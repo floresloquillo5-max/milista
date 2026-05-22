@@ -1,0 +1,15 @@
+
+# 2026-05-22 13:04:41.883595
++yes
+
+# 2026-05-22 13:05:51.308487
++no
+
+# 2026-05-22 13:06:09.389390
++OLLAMA_API_BASE=http://localhost:11434 aider --model ollama/llama3
+
+# 2026-05-22 13:06:16.748571
++yes
+
+# 2026-05-22 13:14:27.611601
++hola en que tareas me puedes ayudar ? 

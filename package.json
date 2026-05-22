@@ -1,7 +1,7 @@
 {
-  "name": "finova",
+  "name": "listamigo",
   "version": "1.0.0",
-  "description": "Finova",
+  "description": "Listamigo",
   "scripts": {
     "build": "npx tsc --noEmit && npx esbuild src/main.ts --bundle --outfile=dist/app.js --format=iife --minify --metafile=dist/meta.json",
     "analyze": "npx esbuild-visualizer --metadata dist/meta.json --open",

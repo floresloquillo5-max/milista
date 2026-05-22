@@ -1,5 +1,5 @@
-const CACHE = 'finova-v1';
-const API_CACHE = 'finova-api-v1';
+const CACHE = 'listamigo-v1';
+const API_CACHE = 'listamigo-api-v1';
 const BASE = self.location.pathname.replace(/\/sw\.js$/, '');
 
 const STATIC_URLS = [

@@ -88,7 +88,7 @@ function scheduleNotificationReminder(prefs: NotificationPrefs): void {
         (prefs.day === 'sunday' && now.getDay() === 0);
 
       if (dayMatch) {
-        sendNotification('📝 Finova', 'No olvides registrar tus gastos del día 💰', prefs);
+        sendNotification('📝 Listamigo', 'No olvides registrar tus gastos del día 💰', prefs);
       }
     }
   }, 30000);

@@ -1,7 +1,7 @@
 const es = {
   app: {
-    name: 'Finova',
-    shortName: 'Finova',
+    name: 'Listamigo',
+    shortName: 'Listamigo',
     offline: 'Sin conexión',
   },
   nav: {
