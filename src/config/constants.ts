@@ -30,6 +30,11 @@ export const SAVINGS_TIPS = [
   '💡 Lleva tu almuerzo al trabajo al menos 3 veces por semana.',
 ];
 
+export const ABLY_CONFIG = {
+  key: '', // 👈 Pon aquí tu API key de Ably (https://ably.com/signup)
+  channelName: 'listamigo-chat',
+};
+
 export const LOCAL_STORAGE_KEYS = {
   marketLists: 'market_lists_v2',
   currentListId: 'currentListId',

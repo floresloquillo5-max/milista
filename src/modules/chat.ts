@@ -1,3 +1,6 @@
+import * as Ably from 'ably';
+import { ABLY_CONFIG } from '../config/constants';
+
 interface ChatMessage {
   id: string;
   nickname: string;
@@ -5,12 +8,11 @@ interface ChatMessage {
   timestamp: number;
 }
 
-const CHANNEL_NAME = 'listamigo-chat';
 const STORAGE_KEY = 'chat_messages';
 const NICKNAME_KEY = 'chat_nickname';
 const MAX_MESSAGES = 200;
 
-let channel: BroadcastChannel | null = null;
+let ablyChannel: Ably.RealtimeChannel | null = null;
 let currentNickname = '';
 
 function loadMessages(): ChatMessage[] {
@@ -72,6 +74,18 @@ function escapeHtml(text: string): string {
   return div.innerHTML;
 }
 
+function receiveMessage(data: unknown): void {
+  const msg = data as ChatMessage;
+  const messages = loadMessages();
+  const exists = messages.some(m => m.id === msg.id);
+  if (!exists) {
+    messages.push(msg);
+    if (messages.length > MAX_MESSAGES) messages.splice(0, messages.length - MAX_MESSAGES);
+    saveMessages(messages);
+    renderMessages();
+  }
+}
+
 function sendMessage(): void {
   const input = document.getElementById('chatInput') as HTMLInputElement | null;
   if (!input) return;
@@ -104,8 +118,8 @@ function sendMessage(): void {
   renderMessages();
   input.value = '';
 
-  if (channel) {
-    channel.postMessage({ type: 'new-message', payload: msg });
+  if (ablyChannel) {
+    ablyChannel.publish('message', msg);
   }
 }
 
@@ -146,6 +160,23 @@ function setNickname(nick: string): void {
   }
 }
 
+function connectAbly(): void {
+  if (!ABLY_CONFIG.key) {
+    console.warn('Chat: Ably API key not configured. Set ABLY_CONFIG.key in src/config/constants.ts');
+    return;
+  }
+
+  try {
+    const realtime = new Ably.Realtime({ key: ABLY_CONFIG.key });
+    ablyChannel = realtime.channels.get(ABLY_CONFIG.channelName);
+    ablyChannel.subscribe('message', (message: Ably.InboundMessage) => {
+      receiveMessage(message.data);
+    });
+  } catch (err) {
+    console.error('Failed to connect to Ably:', err);
+  }
+}
+
 export function setupChat(): void {
   const savedNick = loadNickname();
   if (savedNick) {
@@ -153,6 +184,7 @@ export function setupChat(): void {
   }
 
   renderMessages();
+  connectAbly();
 
   document.getElementById('chatSendBtn')?.addEventListener('click', sendMessage);
   document.getElementById('chatInput')?.addEventListener('keydown', handleInputKeydown);
@@ -160,24 +192,6 @@ export function setupChat(): void {
 
   if (document.getElementById('chatNickname') && !currentNickname) {
     (document.getElementById('chatNickname') as HTMLInputElement)?.focus();
-  }
-
-  try {
-    channel = new BroadcastChannel(CHANNEL_NAME);
-    channel.onmessage = (event: MessageEvent) => {
-      if (event.data?.type === 'new-message') {
-        const messages = loadMessages();
-        const exists = messages.some(m => m.id === event.data.payload.id);
-        if (!exists) {
-          messages.push(event.data.payload);
-          if (messages.length > MAX_MESSAGES) messages.splice(0, messages.length - MAX_MESSAGES);
-          saveMessages(messages);
-          renderMessages();
-        }
-      }
-    };
-  } catch {
-    channel = null;
   }
 
   const faqLink = document.getElementById('chatFaqLink');

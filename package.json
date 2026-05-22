@@ -17,5 +17,8 @@
     "jest-environment-jsdom": "^30.4.1",
     "ts-jest": "^29.0.0",
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "ably": "^2.21.0"
   }
 }
