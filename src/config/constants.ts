@@ -31,7 +31,7 @@ export const SAVINGS_TIPS = [
 ];
 
 export const ABLY_CONFIG = {
-  key: 'hj73nA.E0z_eQ:Eb0KwK5lnU_1V08M5wvdrBxjJXCkdfpkjCNLKvljcuE',
+  key: 'c8PdUQ.oJOKWw:0_8Qt7PqkjznJidf9bMZxTesmAVJSqsjMI7Y8g0hvpQ',
   channelName: 'listamigo-chat',
 };
 
