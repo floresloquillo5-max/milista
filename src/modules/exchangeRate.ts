@@ -40,6 +40,7 @@ export function fetchRate(): void {
     fetch(api.url)
       .then(res => {
         if (!res.ok) throw new Error('HTTP ' + res.status);
+        if (res.headers.get('X-Offline') === 'true') throw new Error('offline');
         return res.json();
       })
       .then(data => {
@@ -50,7 +51,11 @@ export function fetchRate(): void {
           throw new Error('Tasa inválida');
         }
       })
-      .catch(() => {
+      .catch((err) => {
+        if (err instanceof Error && err.message === 'offline') {
+          loadSavedRate();
+          return;
+        }
         setTimeout(tryNextApi, 500);
       });
   };

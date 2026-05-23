@@ -11,7 +11,7 @@
   /* Backgrounds */
   --bg: #FAFAFA;
   --bg-card: #FFFFFF;
-  --bg-input: #F1F5F9;
+  --bg-input: #EDF2F7;
   --bg-hover: #E2E8F0;
   --bg-elevated: #FFFFFF;
   --bg-surface: #F8FAFC;
@@ -52,7 +52,7 @@
   --cashea-glow: rgba(251, 191, 36, 0.2);
 
   /* Borders */
-  --border: #E2E8F0;
+  --border: #D1D9E6;
   --border-light: #F1F5F9;
   --border-focus: var(--primary);
 
@@ -463,6 +463,18 @@ body:not(.light-theme) .header-theme-btn svg {
   box-shadow: var(--shadow-nav);
   transition: background var(--transition-slow), border-color var(--transition-slow);
 }
+
+body.light-theme .app-header {
+  background: #FDF0E0;
+  border-bottom-color: #F0E0CC;
+}
+
+body.light-theme .bottom-nav {
+  background: #FDF0E0;
+  border-top-color: #F0E0CC;
+}
+
+
 
 .menu-btn {
   background: none;

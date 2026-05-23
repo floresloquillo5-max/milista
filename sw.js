@@ -49,18 +49,24 @@ async function staleWhileRevalidate(request) {
   const cache = await caches.open(API_CACHE);
   const cached = await cache.match(request);
 
-  if (cached) {
-    fetch(request).then(response => {
-      if (response.ok) cache.put(request, response.clone());
-    }).catch(() => {});
-    return cached;
-  }
-
   try {
     const response = await fetch(request);
-    if (response.ok) cache.put(request, response.clone());
-    return response;
+    if (response.ok) {
+      cache.put(request, response.clone());
+      return response;
+    }
+    throw new Error('Response not ok');
   } catch {
+    if (cached) {
+      const headers = new Headers(cached.headers);
+      headers.set('X-Offline', 'true');
+      const body = await cached.clone().text();
+      return new Response(body, {
+        status: cached.status,
+        statusText: cached.statusText,
+        headers
+      });
+    }
     return new Response(
       JSON.stringify({ error: 'offline', message: 'No hay conexión para obtener la tasa de cambio' }),
       { status: 503, headers: { 'Content-Type': 'application/json' } }
